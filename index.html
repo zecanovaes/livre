@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<title>livre | UNIFESP</title>
+<style>
+
+body {
+	overflow:hidden;
+}
+
+.loader {
+	text-align: center;  
+	opacity: 1.0; filter: alpha(opacity=100); -moz-opacity: 1.0; -khtml-opacity: 1.0;
+}
+.loader span {
+	display: inline-block;
+	vertical-align: middle;
+	width: 10px;
+	height: 10px;
+	margin: 50px auto;
+	background: black;
+	border-radius: 50px;
+	-webkit-animation: loader 0.9s infinite alternate;
+	-moz-animation: loader 0.9s infinite alternate;
+	animation: loader 0.9s infinite alternate;
+	-o-animation: loader 0.9s infinite alternate;
+}
+.loader span:nth-of-type(2) {
+	-webkit-animation-delay: 0.3s;
+	-moz-animation-delay: 0.3s;
+	animation-delay: 0.3s;
+}
+.loader span:nth-of-type(3) {
+	-webkit-animation-delay: 0.6s;
+	-moz-animation-delay: 0.6s;
+	animation-delay: 0.6s;
+}
+@-webkit-keyframes loader {
+  0% {
+	width: 10px;
+	height: 10px;
+	opacity: 0.9; filter: alpha(opacity=90); -moz-opacity: 0.9; -khtml-opacity: 0.9;
+	-webkit-transform: translateY(0);
+	-o-transform: translateY(0);
+
+  }
+  100% {
+	width: 24px;
+	height: 24px;
+	opacity: 0.1; filter: alpha(opacity=10); -moz-opacity: 0.1; -khtml-opacity: 0.1;
+	-webkit-transform: translateY(-21px);
+	-o-transform: translateY(0);
+  }
+}
+@-moz-keyframes loader {
+  0% {
+	width: 10px;
+	height: 10px;
+	opacity: 0.9; filter: alpha(opacity=90); -moz-opacity: 0.9; -khtml-opacity: 0.9;
+	-moz-transform: translateY(0);
+  }
+  100% {
+	width: 24px;
+	height: 24px;
+	opacity: 0.1; filter: alpha(opacity=10); -moz-opacity: 0.1; -khtml-opacity: 0.1;
+	-moz-transform: translateY(-21px);
+  }
+}
+
+@-ms-keyframes loader {
+  0% {
+	width: 10px;
+	height: 10px;
+	opacity: 0.9; filter: alpha(opacity=90); -moz-opacity: 0.9; -khtml-opacity: 0.9;
+	-ms-transform: translateY(0);
+  }
+  100% {
+	width: 24px;
+	height: 24px;
+	opacity: 0.1; filter: alpha(opacity=10); -moz-opacity: 0.1; -khtml-opacity: 0.1;
+	-ms-transform: translateY(-21px);
+  }
+}
+
+@keyframes loader {
+  0% {
+	width: 10px;
+	height: 10px;
+	opacity: 0.9; filter: alpha(opacity=90); -moz-opacity: 0.9; -khtml-opacity: 0.9;
+	transform: translateY(0);
+  }
+  100% {
+	width: 24px;
+	height: 24px;
+	opacity: 0.1; filter: alpha(opacity=10); -moz-opacity: 0.1; -khtml-opacity: 0.1;
+	transform: translateY(-21px);
+  }
+}
+
+#logoL, #logoV {
+	position:absolute;
+	top: 0%;
+	bottom: 0%;
+	left: 10%;
+	right: 10%;
+	background-size:contain;
+	background-repeat:no-repeat;
+	background-position:center;	
+}
+#logoV {	
+	background-image:url(logoV.png);
+	transform: translate(150%, 0%);
+ 	-ms-transform: translate(150%, 0%); /* IE 9 */
+	-webkit-transform: translate(150%, 0%); /* Chrome, Safari, Opera */
+	-moz-transform: translate(150%, 0%);
+	-o-transform: translate(150%, 0%);
+}
+
+#logoL {
+	background-image:url(logoL.png);
+	transform: translate(-150%, 0%);
+ 	-ms-transform: translate(-150%, 0%); /* IE 9 */
+	-webkit-transform: translate(-150%, 0%); /* Chrome, Safari, Opera */
+	-moz-transform: translate(-150%, 0%);
+	-o-transform: translate(-150%, 0%);
+}
+
+#logoL, #logoV, #fundo, #outer {
+-webkit-transition-duration: 2s; -moz-transition-duration: 2s; -o-transition-duration: 2s; transition-duration: 2s;
+-webkit-transition-property: all; -moz-transition-property:all;	-o-transition-property: all; transition-property: all;
+}
+
+#spag, .loader {
+-webkit-transition-duration: 1s; -moz-transition-duration: 1s; -o-transition-duration: 1s; transition-duration: 1s;
+-webkit-transition-property: all; -moz-transition-property:all;	-o-transition-property: all; transition-property: all;
+}
+
+#fundo {
+	position:absolute;
+	width:100%;
+	height:100%;
+	overflow:hidden;
+	left:0;
+	top:0;
+	background-color:#2D7D59;
+	transform: translate(0%, 150%);
+ 	-ms-transform: translate(0%, 150%); /* IE 9 */
+	-webkit-transform: translate(0%, 150%); /* Chrome, Safari, Opera */
+	-moz-transform: translate(0%, 150%);
+	-o-transform: translate(0%, 150%);
+	min-height:40vw;
+}
+
+
+#livrelogo {
+	margin-right:11%;
+	margin-left:50%;
+	padding-bottom:17%;
+	margin-top:0;
+	background-image:url(livrelogo.png);
+	background-size:contain;
+	background-position:center;
+	background-repeat:no-repeat;
+}
+
+#menu {
+	margin-left:52%;
+	margin-right: 10%;
+	margin-top:1%;
+}
+#menuh, #menum, #menuc, #menu, #outer, #outer2, #livrelogo, #logopesl, .middle, .home, .conteudo {
+   -webkit-backface-visibility: hidden;
+	-webkit-transform: translateZ(0) scale(1.0, 1.0);
+}
+#fundo, #logoL, #logoV, #spag {
+   -webkit-backface-visibility: hidden;
+}
+#menuh, #menum, #menuc {
+	width:100%;
+	padding-bottom:12%;
+	background-size:contain;
+	background-repeat:no-repeat;
+	background-position:right;
+	cursor:pointer;
+}
+#menuh { background-image:url(mhist.png); margin-bottom:2%;}
+#menum { background-image:url(mmemb.png); margin-bottom:2%;}
+#menuc { background-image:url(mcurs.png); }
+
+#menuh:hover, #hide1 {
+	background-image:url(mhisthover.png);
+}
+#menum:hover, #hide2 {
+	background-image:url(mmembhover.png);
+}
+#menuc:hover, #hide3 {
+	background-image:url(mcurshover.png);
+}
+
+#hide1, #hide2, #hide3 { visibility:hidden; }
+
+#outer {
+	position:absolute;
+	display: table;
+	right:0%;
+	top:0;
+	width:100%;
+	height:100%;
+}
+
+#outer2 {
+	position:absolute;
+	display: table;
+	right:100%;
+	top:0;
+	width:100%;
+	height:100%;
+}
+
+.middle {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+#spag {
+	position:absolute;
+	width:100%;
+	height:100%;
+	top:0;
+	left:0;
+	transform: translate(100%, 0%);
+ 	-ms-transform: translate(100%, 0%); /* IE 9 */
+	-webkit-transform: translate(100%, 0%); /* Chrome, Safari, Opera */
+	-moz-transform: translate(100%, 0%);
+	-o-transform: translate(100%, 0%);
+	min-height:40vw;
+   -webkit-backface-visibility: hidden;
+}
+	
+#hist, #int, #curs {
+	position:absolute;
+	width:100%;
+	height:100%;
+	top:0;
+	left:0;
+	background-color:#FFFFFF;
+	visibility:hidden;
+}
+
+#histtitb, #inttitb, #curstitb {
+	position:absolute;
+	height:100%;
+	width: 10%;
+	background-color:#81B35D;
+	top:0;
+	left:0;
+	border-right: 1vmin solid #000000;
+	border-left: 1vmin solid #000000;
+}
+
+#histtit, #inttit, #curstit {
+	height:80%;
+	width: 100%;
+	top:0;
+	left:0;
+	background-size:contain;
+	background-repeat:no-repeat;
+	background-position:top;
+}
+
+#histtit {background-image:url(histtit.png);}
+#inttit {background-image:url(inttit.png);}
+#curstit {background-image:url(curstit.png);}
+
+.home {
+	position:absolute;
+	width:100%;
+	padding-top: 100%;
+	bottom:0;
+	left:0;
+	background-image:url(home.png);
+	background-size: contain;
+	background-repeat:no-repeat;
+	background-position:center;
+	cursor:pointer;
+}
+
+.conteudo {	
+	position:absolute;
+	width:85%;
+	height:100%;
+	overflow-y:auto;
+	overflow-x:hidden;
+	top:0;
+	right:4%;
+}
+.padding {
+	padding: 7%;
+	text-align:justify;
+	font-size:2vmax;
+	font-weight:300;
+	line-height:3.5vw;
+	color:#373435;
+	font-family: Futura, "Trebuchet MS", Arial, sans-serif;
+}
+
+#logopesl {
+	width: 100%;
+	padding-bottom: 30%;
+	background-image:url(peslLOGO.png);
+	background-size:contain;
+	background-repeat:no-repeat;
+	background-position:center;
+	padding-left:2%;
+	padding-right:2%;
+	margin-left:-2%;
+}
+
+.integrantes {
+	width:80%;
+	padding-bottom:45%;
+	margin-left:10%;
+	margin-top:5%;
+	margin-bottom:5%;
+}
+
+#evandro, #zeca, #hernan {
+	width:80%;
+	padding-bottom:45%;
+	position:absolute;
+	background-size:contain;
+	background-repeat:no-repeat;
+	background-position:center;
+}
+
+.fill {
+	display:block;
+	position:absolute;
+	height:100%;
+	width:100%;
+	text-decoration:none;
+	outline:none;
+	border:0;
+}
+#evandro { background-image:url(evandro.png); }
+#zeca { background-image:url(zeca.png); }
+#hernan { background-image:url(hernan.png); }
+
+#prezi {
+	background-image:url(propPREZI.png);
+	background-size:contain;
+	background-repeat:no-repeat;
+	background-position:center;
+	width:100%;
+	height:100%;
+	position:absolute;
+	right:0%;
+}
+
+</style>
+</head>
+
+<body>
+<div id="hide1"></div><div id="hide2"></div><div id="hide3"></div>
+<div id="outer"><div class="middle">
+<div class="loader">
+    <span></span>
+    <span></span>
+    <span></span>
+</div></div></div>
+<div id="fundo">
+<div id="outer2"><div class="middle">
+<div id="livrelogo"></div>
+<div id="menu"><div id="menuh"></div><div id="menum"></div><div id="menuc"></div></div>
+</div>
+</div>
+<div id="logoL"></div><div id="logoV"></div>
+</div>
+<div id="spag"><div id="hist">
+<div class="conteudo"><div class="padding">
+<div id="logopesl"></div>
+
+<br>
+
+A tecnologia não vai dominar o mundo; isso já aconteceu! Gostando ou não, não há como fugir dela, nem do consequente cenário de mudanças aceleradas. A tendência é que cada vez menos as coisas sejam feitas manualmente, pois, felizmente, já existem softwares que podem solucionar diversos problemas e simplificar nossas vidas. Apesar de algumas dessas soluções possuírem um preço bastante elevado, existem muitos softwares gratuitos que podem dar conta do recado, sendo conhecidos como “Softwares Livres”.
+<br>
+<br>
+Foi pensando nisso que o ICT da Universidade Federal de São Paulo, em São José dos Campos - desenvolveu o Programa de Educação em Software Livre (PESL), visando a elaboração de cursos presenciais para a comunidade acadêmica. A ideia se espalhou e hoje o PESL está presente em todos os campi da UNIFESP. Apesar dos grandes avanços, a transmissão dos cursos para o restante da população foi dificultada pela utilização das aulas presenciais. Para resolver essa situação, os integrantes do Programa no campus Osasco decidiram criar uma plataforma online com divulgação de cursos dentro de todo território nacional.
+<br>
+<br>
+
+De estilo despojado e linguagem simplificada, a plataforma LIVRE começará a trilhar sua história ainda em 2015, com a publicação de seu primeiro curso (Introdução ao PREZI). Aos que estão precisando de “Horas Complementares”, tratem de realizar os controles de acesso para ganharem seus certificados. A carga horária dependerá do curso em questão, e será divulgada posteriormente. 
+<br>
+<br>
+
+Estamos contando com o apoio de todos vocês para termos a certeza de que os conteúdos estão sendo capazes de transmitir o conhecimento necessário para quem veio buscá-lo, então sintam-se livres para enviarem dúvidas e sugestões ao nosso e-mail de contato divulgado abaixo.
+
+
+</div>
+</div>
+<div id="histtitb"><div id="histtit"></div><div class="home"></div></div>
+</div>
+<div id="int"><div class="conteudo">
+<div class="integrantes">
+<div id="evandro"><a class="fill" href="http://lattes.cnpq.br/0631574435962669" target="_blank"></a></div>
+</div>
+
+<div class="integrantes">
+<div id="zeca"><a class="fill" href="http://lattes.cnpq.br/5169176535445559" target="_blank"></a></div>
+</div>
+
+<div class="integrantes">
+<div id="hernan"><a class="fill" href="http://lattes.cnpq.br/2869923054936837" target="_blank"></a></div>
+</div>
+
+</div>
+<div id="inttitb"><div id="inttit"></div><div class="home"></div></div></div>
+<div id="curs">
+<div class="conteudo">
+<div id="prezi"></div>
+</div>
+<div id="curstitb"><div id="curstit"></div><div class="home"></div></div></div>
+</div>
+
+
+<script>
+
+$("#menuh, #menum, #menuc").click(function () { 
+
+var timer = setTimeout(function() {  
+
+	$("#fundo").css({'transform': 'translate(-96%, 0%)', '-ms-transform': 'translate(-96%, 0%)', '-webkit-transform': 'translate(-96%, 0%)', '-moz-transform': 'translate(-96%, 0%)', '-o-transform': 'translate(-96%, 0%)'});
+	$("#spag").css({'transform': 'translate(4%, 0%)', '-ms-transform': 'translate(4%, 0%)', '-webkit-transform': 'translate(4%, 0%)', '-moz-transform': 'translate(4%, 0%)', '-o-transform': 'translate(4%, 0%)'});
+
+	}, 200);
+
+});
+
+$(".home").click(function () { 
+
+	$("#spag").css({'transform': 'translate(100%, 0%)', '-ms-transform': 'translate(100%, 0%)', '-webkit-transform': 'translate(100%, 0%)', '-moz-transform': 'translate(100%, 0%)', '-o-transform': 'translate(100%, 0%)'});
+	$("#fundo").css({'transform': 'translate(0%, 0%)', '-ms-transform': 'translate(0%, 0%)', '-webkit-transform': 'translate(0%, 0%)', '-moz-transform': 'translate(0%, 0%)', '-o-transform': 'translate(0%, 0%)'});
+
+});
+
+$("#menuh").click(function () { 
+	$("#curs").css({'visibility': 'hidden'});
+	$("#int").css({'visibility': 'hidden'});
+	$("#hist").css({'visibility': 'visible'});
+});
+
+$("#menum").click(function () { 
+	$("#curs").css({'visibility': 'hidden'});
+	$("#hist").css({'visibility': 'hidden'});
+	$("#int").css({'visibility': 'visible'});
+});
+
+$("#menuc").click(function () { 
+	$("#hist").css({'visibility': 'hidden'});
+	$("#int").css({'visibility': 'hidden'});
+	$("#curs").css({'visibility': 'visible'});
+});
+
+
+$(window).bind('load', function(){
+
+var timer = setTimeout(function() {  
+
+	$("#fundo").css({'transform': 'translate(0%, 0%)', '-ms-transform': 'translate(0%, 0%)', '-webkit-transform': 'translate(0%, 0%)', '-moz-transform': 'translate(0%, 0%)', '-o-transform': 'translate(0%, 0%)'});
+
+	$("#logoL, #logoV").css({'transform': 'translate(0%, 0%)', '-ms-transform': 'translate(0%, 0%)', '-webkit-transform': 'translate(0%, 0%)', '-moz-transform': 'translate(0%, 0%)', '-o-transform': 'translate(0%, 0%)'});
+
+	$(".loader").css({'opacity': '0.0', 'filter': 'alpha(opacity=00)', '-moz-opacity': '0.0', '-khtml-opacity': '0.0'});
+	
+	}, 1000);
+
+var timer = setTimeout(function() {  
+
+	$("#logoL, #logoV").css({'right': '45%', 'left': '3%', 'top': '8%', 'bottom': '8%', '-webkit-transition-duration': '1s', '-moz-transition-duration': '1s', '-o-transition-duration': '1s', 'transition-duration': '1s'});
+	
+	$("#outer2").css({'right': '0%'});
+	$("#outer2, #fundo").css({'-webkit-transition-duration': '1s', '-moz-transition-duration': '1s', '-o-transition-duration': '1s', 'transition-duration': '1s'});
+
+
+	}, 4000);
+
+
+});
+</script>
+
+<script>
+
+$(window).on('resize', function(){
+$(document).scrollTop( $(window.location.hash).offset().top );  
+
+});
+
+</script>
+
+
+<script>
+
+function eventFire(el, etype){
+  if (el.fireEvent) {
+    el.fireEvent('on' + etype);
+  } else {
+    var evObj = document.createEvent('Events');
+    evObj.initEvent(etype, true, false);
+    el.dispatchEvent(evObj);
+  }
+}
+
+(function($) {
+
+    $.fn.SmoothAnchors = function() {
+
+        function scrollBodyTo(destination, hash) {
+
+            var scrollmem = $(document).scrollTop();
+	        window.location.hash = hash;
+			    var hash = location.hash.replace('#','');
+
+            $(document).scrollTop(scrollmem);
+            $("html,body").animate({
+                scrollTop: destination
+            }, 1000);
+
+        }
+		
+		        if (typeof $().on == "function") {
+            $(document).on('click', 'a[href^="#"]', function() {
+
+				var href = $(this).attr("href");
+					
+                if ($(href).length == 0) {
+
+                    var nameSelector = "[name=" + href.replace("#", "") + "]";
+
+                    if (href == "#") {
+                        scrollBodyTo(0, href);
+                    }
+                    else if ($(nameSelector).length != 0) {
+                        scrollBodyTo($(nameSelector).offset().top, href);
+                    }
+                    else {
+                        
+                        window.location = href;
+                    }
+                }
+                else {
+                    scrollBodyTo($(href).offset().top, href);
+                }
+                return false;
+            });
+        }
+        else {
+            $('a[href^="#"]').click(function() {
+                var href = $(this).attr("href");
+
+                if ($(href).length == 0) {
+
+                    var nameSelector = "[name=" + href.replace("#", "") + "]";
+
+                    if (href == "#") {
+                        scrollBodyTo(0, href);
+                    }
+                    else if ($(nameSelector).length != 0) {
+                        scrollBodyTo($(nameSelector).offset().top, href);
+                    }
+                    else {
+                       
+                        window.location = href;
+                    }
+                }
+                else {
+                    scrollBodyTo($(href).offset().top, href);
+                }
+                return false;
+            });
+        }
+    };
+})(jQuery);
+
+$(document).ready(function() {
+    $().SmoothAnchors();
+});
+
+
+</script>
+</body>
+</html>
