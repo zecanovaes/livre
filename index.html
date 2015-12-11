@@ -25,8 +25,23 @@
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <style>
 
+@-ms-viewport{
+  width: device-width;
+}
+
+::selection {
+  background: #A9D48A; /* WebKit/Blink Browsers */
+}
+::-moz-selection {
+  background: #A9D48A; /* Gecko Browsers */
+}
+
 body {
 	overflow:hidden;
+}
+
+html {
+  filter: expression(document.execCommand("BackgroundImageCache", false, true));
 }
 
 .loader {
@@ -177,7 +192,7 @@ body {
 	margin-right:11%;
 	margin-left:50%;
 	padding-bottom:17%;
-	margin-top:0;
+	margin-top:0%;
 	background-image:url(livrelogo.png);
 	background-size:contain;
 	background-position:center;
@@ -185,16 +200,25 @@ body {
 }
 
 #menu {
-	margin-left:52%;
-	margin-right: 10%;
-	margin-top:1%;
+	margin-left:50%;
+	margin-right: 11%;
+	margin-top:3%;
 }
-#menuh, #menum, #menuc, #menu, #outer, #outer2, #livrelogo, #logopesl, .middle, .home, .conteudo {
-   -webkit-backface-visibility: hidden;
+
+#menuh:hover, #menum:hover, #menuc:hover {padding-left:3%;}
+
+#menuh, #menum, #menuc, #menuh:hover, #menum:hover, #menuc:hover, #menu, #outer, #outer2, #livrelogo, #logopesl, .middle, .home, .conteudo, #hide1, #hide2, #hide3, #menuhb, #menumb, #menucb {
+	-webkit-backface-visibility: hidden;
 	-webkit-transform: translateZ(0) scale(1.0, 1.0);
+	-moz-backface-visibility: hidden;
+	-moz-transform: translateZ(0) scale(1.0, 1.0);
+	backface-visibility: hidden;
+	transform: translateZ(0) scale(1.0, 1.0);
 }
 #fundo, #logoL, #logoV, #spag {
-   -webkit-backface-visibility: hidden;
+	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+	backface-visibility: hidden;
 }
 #menuh, #menum, #menuc {
 	width:100%;
@@ -208,13 +232,13 @@ body {
 #menum { background-image:url(mmemb.png); margin-bottom:2%;}
 #menuc { background-image:url(mcurs.png); }
 
-#menuh:hover, #hide1 {
+#hide1 {
 	background-image:url(mhisthover.png);
 }
-#menum:hover, #hide2 {
+#hide2 {
 	background-image:url(mmembhover.png);
 }
-#menuc:hover, #hide3 {
+#hide3 {
 	background-image:url(mcurshover.png);
 }
 
@@ -378,6 +402,24 @@ body {
 	right:0%;
 }
 
+#menuhb, #menumb, #menucb {
+	width:100%;
+	height:100%;
+	right:0;
+	position:absolute;
+	display:block;
+	background-size:contain;
+	background-repeat:no-repeat;
+	background-position:right;
+	opacity: 0.0; filter: alpha(opacity=00); -moz-opacity: 0.0; -khtml-opacity: 0.0;
+}
+
+#menuh:hover #menuhb, #menum:hover #menumb, #menuc:hover #menucb {opacity: 1.0; filter: alpha(opacity=100); -moz-opacity: 1.0; -khtml-opacity: 1.0;}
+#menuhb {background-image:url(mhisthover.png);}
+
+#menumb {background-image:url(mmembhover.png);}
+
+#menucb {background-image:url(mcurshover.png);}
 </style>
 </head>
 
@@ -392,7 +434,7 @@ body {
 <div id="fundo">
 <div id="outer2"><div class="middle">
 <div id="livrelogo"></div>
-<div id="menu"><div id="menuh"></div><div id="menum"></div><div id="menuc"></div></div>
+<div id="menu"><div id="menuh"><div id="menuhb"></div></div><div id="menum"><div id="menumb"></div></div><div id="menuc"><div id="menucb"></div></div></div>
 </div>
 </div>
 <div id="logoL"></div><div id="logoV"></div>
